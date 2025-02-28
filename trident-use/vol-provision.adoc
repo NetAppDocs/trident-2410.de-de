@@ -1,0 +1,206 @@
+---
+sidebar: sidebar 
+permalink: trident-use/vol-provision.html 
+keywords: volumes, pvc, pv, persistentvolume, persistentvolumeclaim, mount, pod, provision 
+summary: 'Erstellen Sie ein PersistentVolume (PV) und ein PersistentVolumeClaim (PVC), das die konfigurierte Kubernetes StorageClass verwendet, um Zugriff auf das PV anzufordern. Anschließend können Sie das PV an einem Pod montieren.' 
+---
+= Bereitstellen eines Volumes
+:hardbreaks:
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Erstellen Sie ein PersistentVolume (PV) und ein PersistentVolumeClaim (PVC), das die konfigurierte Kubernetes StorageClass verwendet, um Zugriff auf das PV anzufordern. Anschließend können Sie das PV an einem Pod montieren.
+
+
+
+== Überblick
+
+Ein link:https://kubernetes.io/docs/concepts/storage/persistent-volumes/["_PersistentVolume_"^] (PV) ist eine physische Speicherressource, die vom Clusteradministrator auf einem Kubernetes-Cluster bereitgestellt wird. Die https://kubernetes.io/docs/concepts/storage/persistent-volumes["_PersistentVolumeClaim_"^] (PVC) ist eine Anforderung für den Zugriff auf das PersistentVolume auf dem Cluster.
+
+Die PVC kann so konfiguriert werden, dass eine Speicherung einer bestimmten Größe oder eines bestimmten Zugriffsmodus angefordert wird. Mithilfe der zugehörigen StorageClass kann der Clusteradministrator mehr als die Größe des PersistentVolume und den Zugriffsmodus steuern, z. B. die Performance oder das Service-Level.
+
+Nachdem Sie das PV und die PVC erstellt haben, können Sie das Volume in einem Pod einbinden.
+
+
+
+=== Beispielmanifeste
+
+.PersistentVolume-Beispielmanifest
+[%collapsible]
+====
+Dieses Beispielmanifest zeigt ein Basis-PV von 10Gi, das mit StorageClass verknüpft ist `basic-csi`.
+
+[listing]
+----
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-storage
+  labels:
+    type: local
+spec:
+  storageClassName: basic-csi
+  capacity:
+    storage: 10Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/my/host/path"
+----
+====
+.PersistentVolumeClaim-Beispielmanifeste
+[%collapsible]
+====
+Diese Beispiele zeigen grundlegende PVC-Konfigurationsoptionen.
+
+.PVC mit RWO-Zugang
+Dieses Beispiel zeigt ein einfaches PVC mit RWO-Zugriff, das mit einer StorageClass namens verknüpft ist `basic-csi`.
+
+[listing]
+----
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: pvc-storage
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+  storageClassName: basic-csi
+----
+.PVC mit NVMe/TCP
+Dieses Beispiel zeigt eine grundlegende PVC für NVMe/TCP mit RWO-Zugriff, die einer StorageClass namens zugeordnet ist `protection-gold`.
+
+[listing]
+----
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+name: pvc-san-nvme
+spec:
+accessModes:
+  - ReadWriteOnce
+resources:
+  requests:
+    storage: 300Mi
+storageClassName: protection-gold
+----
+====
+.Pod-Manifest-Proben
+[%collapsible]
+====
+Diese Beispiele zeigen grundlegende Konfigurationen zum Anschließen der PVC an einen Pod.
+
+.Basiskonfiguration
+[listing]
+----
+kind: Pod
+apiVersion: v1
+metadata:
+  name: pv-pod
+spec:
+  volumes:
+    - name: pv-storage
+      persistentVolumeClaim:
+       claimName: basic
+  containers:
+    - name: pv-container
+      image: nginx
+      ports:
+        - containerPort: 80
+          name: "http-server"
+      volumeMounts:
+        - mountPath: "/my/mount/path"
+          name: pv-storage
+----
+.Grundlegende NVMe/TCP-Konfiguration
+[listing]
+----
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    run: nginx
+  name: nginx
+spec:
+  containers:
+    - image: nginx
+      name: nginx
+      resources: {}
+      volumeMounts:
+        - mountPath: "/usr/share/nginx/html"
+          name: task-pv-storage
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+  volumes:
+    - name: task-pv-storage
+      persistentVolumeClaim:
+      claimName: pvc-san-nvme
+----
+====
+
+
+== Erstellen Sie das PV und die PVC
+
+.Schritte
+. Erstellen Sie das PV.
++
+[listing]
+----
+kubectl create -f pv.yaml
+----
+. Überprüfen Sie den PV-Status.
++
+[listing]
+----
+kubectl get pv
+NAME        CAPACITY  ACCESS MODES  RECLAIM POLICY  STATUS    CLAIM  STORAGECLASS  REASON  AGE
+pv-storage  4Gi       RWO           Retain          Available                              7s
+----
+. Erstellen Sie das PVC.
++
+[listing]
+----
+kubectl create -f pvc.yaml
+----
+. Überprüfen Sie den PVC-Status.
++
+[listing]
+----
+kubectl get pvc
+NAME        STATUS VOLUME     CAPACITY ACCESS MODES STORAGECLASS AGE
+pvc-storage Bound  pv-name 2Gi      RWO                       5m
+----
+. Mounten Sie das Volume in einem Pod.
++
+[listing]
+----
+kubectl create -f pv-pod.yaml
+----
++
+
+NOTE: Sie können den Fortschritt mit überwachen `kubectl get pod --watch`.
+
+. Vergewissern Sie sich, dass das Volume auf gemountet ist `/my/mount/path`.
++
+[listing]
+----
+kubectl exec -it task-pv-pod -- df -h /my/mount/path
+----
+. Sie können den Pod jetzt löschen. Die Pod Applikation wird nicht mehr existieren, aber das Volume bleibt erhalten.
++
+[listing]
+----
+kubectl delete pod pv-pod
+----
+
+
+Einzelheiten zur Interaktion von Storage-Klassen mit den `PersistentVolumeClaim` Parametern und zur Steuerung, wie Trident Volumes provisioniert, finden Sie unterlink:../trident-reference/objects.html["Kubernetes und Trident Objekte"].
