@@ -26,7 +26,7 @@ Dieses Beispiel erstellt einen AWS Secret Manager-Schlüssel, um Trident-CSI-Anm
 [listing]
 ----
 aws secretsmanager create-secret --name trident-secret --description "Trident CSI credentials"\
-  --secret-string "{\"username\":\"vsadmin\",\"password\":\"<svmpassword>\"}""
+  --secret-string "{\"username\":\"vsadmin\",\"password\":\"<svmpassword>\"}"
 ----
 
 
@@ -132,7 +132,7 @@ Vergewissern Sie sich, dass der OIDC-Anbieter dem Cluster zugeordnet ist. Sie k�
 ----
 aws iam list-open-id-connect-providers | grep $oidc_id | cut -d "/" -f4
 ----
-Falls keine Ausgabe angezeigt wird, können Sie den folgenden Befehl verwenden, um IAM OIDC dem Cluster zuzuordnen:
+Verwenden Sie den folgenden Befehl, um IAM OIDC dem Cluster zuzuordnen:
 
 [listing]
 ----
