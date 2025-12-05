@@ -44,11 +44,11 @@ indexpage:
       url: "/trident-use/vol-operations.html"
   - title: Erweitertes Datenmanagement und Datensicherung
     links:
-    - title: Erweiterte Datensicherung mit Trident Protect
+    - title: Erweiterter Datenschutz mit Trident Protect
       url: "/trident-protect/learn-about-trident-protect.html"
-    - title: Implementieren Sie Trident Protect
+    - title: Trident Protect einsetzen
       url: "/trident-protect/trident-protect-installation.html"
-    - title: Upgrade von Trident Protect
+    - title: Upgrade Trident Protect
       url: "/trident-protect/trident-protect-upgrade.html"
   - title: Demos und Lernprogramme
     links:

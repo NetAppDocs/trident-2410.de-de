@@ -2,9 +2,9 @@
 sidebar: sidebar 
 permalink: trident-protect/trident-protect-installation.html 
 keywords: install, trident, protect, requirements, registry 
-summary: Wenn Ihre Umgebung die Anforderungen erfüllt, können Sie die folgenden Schritte ausführen, um Trident Protect zu installieren. 
+summary: Wenn Ihre Umgebung die Anforderungen erfüllt, können Sie Trident Protect mit diesen Schritten installieren. 
 ---
-= Installieren und konfigurieren Sie Trident Protect
+= Trident Protect installieren und konfigurieren
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -14,10 +14,10 @@ summary: Wenn Ihre Umgebung die Anforderungen erfüllt, können Sie die folgende
 
 
 [role="lead"]
-Wenn Ihre Umgebung die Anforderungen für Trident Protect erfüllt, können Sie mit den folgenden Schritten Trident Protect auf Ihrem Cluster installieren. Sie können Trident Protect von NetApp beziehen oder es von Ihrer eigenen privaten Registrierung installieren. Die Installation von einer privaten Registrierung ist hilfreich, wenn Ihr Cluster nicht auf das Internet zugreifen kann.
+Wenn Ihre Umgebung die Anforderungen für Trident Protect erfüllt, können Sie die folgenden Schritte befolgen, um Trident Protect auf Ihrem Cluster zu installieren. Sie können Trident Protect von NetApp beziehen oder es aus Ihrer eigenen privaten Registry installieren. Die Installation aus einer privaten Registry ist hilfreich, wenn Ihr Cluster keinen Internetzugang hat.
 
 
-NOTE: Standardmäßig erfasst Trident Protect Support-Informationen, die bei allen NetApp-Supportfällen helfen, die Sie öffnen können, einschließlich Protokollen, Kennzahlen und Topologieinformationen zu Clustern und gemanagten Applikationen. Trident Protect sendet diese Support-Pakete nach einem täglichen Zeitplan an NetApp. Sie können diese Support-Bundle-Sammlung optional deaktivieren, wenn Sie Trident Protect installieren. Sie können jederzeit manuell link:trident-protect-generate-support-bundle.html["Generieren Sie ein Support-Bundle"]wählen.
+NOTE: Standardmäßig erfasst Trident Protect Supportinformationen, die bei der Bearbeitung von NetApp Supportfällen hilfreich sind, darunter Protokolle, Metriken und Topologieinformationen zu Clustern und verwalteten Anwendungen. Trident Protect sendet diese Support-Pakete täglich an NetApp . Sie können diese Support-Bundle-Sammlung optional deaktivieren, wenn Sie Trident Protect installieren. Sie können manuelllink:trident-protect-generate-support-bundle.html["Generieren Sie ein Support-Bundle"] jederzeit.
 
 
 
@@ -40,15 +40,15 @@ helm repo add netapp-trident-protect https://netapp.github.io/trident-protect-he
 ----
 helm install trident-protect-crds netapp-trident-protect/trident-protect-crds --version 100.2410.1 --create-namespace --namespace trident-protect
 ----
-. Verwenden Sie Helm, um Trident Protect mit einem der folgenden Befehle zu installieren. Ersetzen Sie `<name_of_cluster>` ihn durch einen Cluster-Namen, der dem Cluster zugewiesen wird und zum Identifizieren der Backups und Snapshots des Clusters verwendet wird:
+. Verwenden Sie Helm, um Trident Protect mit einem der folgenden Befehle zu installieren. Ersetzen `<name_of_cluster>` mit einem Clusternamen, der dem Cluster zugewiesen wird und zur Identifizierung der Backups und Snapshots des Clusters verwendet wird:
 +
-** Trident Protect normal installieren:
+** Installieren Sie Trident Protect wie gewohnt:
 +
 [source, console]
 ----
 helm install trident-protect netapp-trident-protect/trident-protect --set clusterName=<name_of_cluster> --version 100.2410.1 --create-namespace --namespace trident-protect
 ----
-** Installieren Sie Trident Protect und deaktivieren Sie die geplanten täglichen Uploads von Trident Protect AutoSupport Support-Paketen:
+** Installieren Sie Trident Protect und deaktivieren Sie die geplanten täglichen Trident Protect AutoSupport Support-Bundle-Uploads:
 +
 [source, console]
 ----
@@ -59,9 +59,9 @@ helm install trident-protect netapp-trident-protect/trident-protect --set autoSu
 
 
 --
-.Installieren Sie Trident Protect aus einer privaten Registrierung
+.Installieren Sie Trident Protect aus einer privaten Registry.
 --
-Sie können Trident Protect aus einer privaten Image-Registrierung installieren, wenn Ihr Kubernetes-Cluster nicht auf das Internet zugreifen kann. Ersetzen Sie in diesen Beispielen Werte in Klammern durch Informationen aus Ihrer Umgebung:
+Sie können Trident Protect aus einer privaten Image-Registry installieren, wenn Ihr Kubernetes-Cluster keinen Zugriff auf das Internet hat. Ersetzen Sie in diesen Beispielen die Werte in Klammern durch Informationen aus Ihrer Umgebung:
 
 .Schritte
 . Ziehen Sie die folgenden Bilder auf Ihren lokalen Computer, aktualisieren Sie die Tags und schieben Sie sie dann in Ihre private Registrierung:
@@ -97,7 +97,7 @@ docker tag netapp/controller:24.10.1 <private-registry-url>/controller:24.10.1
 ----
 docker push <private-registry-url>/controller:24.10.1
 ----
-. Trident Protect System Namespace erstellen:
+. Erstellen Sie den Trident Protect-Systemnamensraum:
 +
 [source, console]
 ----
@@ -121,7 +121,7 @@ kubectl create secret docker-registry regcred --docker-username=<registry-userna
 ----
 helm repo add netapp-trident-protect https://netapp.github.io/trident-protect-helm-chart
 ----
-. Erstellen Sie eine Datei mit dem Namen `protectValues.yaml`. Stellen Sie sicher, dass es die folgenden Trident Protect-Einstellungen enthält:
+. Erstellen Sie eine Datei mit dem Namen `protectValues.yaml` . Stellen Sie sicher, dass es die folgenden Trident Protect-Einstellungen enthält:
 +
 [source, yaml]
 ----
@@ -149,15 +149,15 @@ webhooksCleanup:
 ----
 helm install trident-protect-crds netapp-trident-protect/trident-protect-crds --version 100.2410.1 --create-namespace --namespace trident-protect
 ----
-. Verwenden Sie Helm, um Trident Protect mit einem der folgenden Befehle zu installieren. Ersetzen Sie `<name_of_cluster>` ihn durch einen Cluster-Namen, der dem Cluster zugewiesen wird und zum Identifizieren der Backups und Snapshots des Clusters verwendet wird:
+. Verwenden Sie Helm, um Trident Protect mit einem der folgenden Befehle zu installieren. Ersetzen `<name_of_cluster>` mit einem Clusternamen, der dem Cluster zugewiesen wird und zur Identifizierung der Backups und Snapshots des Clusters verwendet wird:
 +
-** Trident Protect normal installieren:
+** Installieren Sie Trident Protect wie gewohnt:
 +
 [source, console]
 ----
 helm install trident-protect netapp-trident-protect/trident-protect --set clusterName=<name_of_cluster> --version 100.2410.1 --create-namespace --namespace trident-protect -f protectValues.yaml
 ----
-** Installieren Sie Trident Protect und deaktivieren Sie die geplanten täglichen Uploads von Trident Protect AutoSupport Support-Paketen:
+** Installieren Sie Trident Protect und deaktivieren Sie die geplanten täglichen Uploads des Trident Protect AutoSupport Supportpakets:
 +
 [source, console]
 ----
@@ -171,13 +171,13 @@ helm install trident-protect netapp-trident-protect/trident-protect --set autoSu
 ====
 
 
-== Geben Sie die Höchstwerte für die Trident Protect Container-Ressourcen an
+== Legen Sie die Ressourcenbeschränkungen für Trident Protect-Container fest.
 
-Nach der Installation von Trident Protect können Sie eine Konfigurationsdatei verwenden, um Ressourcenbeschränkungen für Trident Protect Container festzulegen. Durch das Festlegen der Grenzwerte für die Ressourcen können Sie steuern, wie viele Ressourcen des Clusters von Trident Protect-Vorgängen verbraucht werden.
+Sie können nach der Installation von Trident Protect eine Konfigurationsdatei verwenden, um Ressourcenlimits für Trident Protect-Container festzulegen. Durch das Festlegen von Ressourcenlimits können Sie steuern, wie viele der Clusterressourcen von Trident Protect-Operationen verbraucht werden.
 
 .Schritte
 . Erstellen Sie eine Datei mit dem Namen `resourceLimits.yaml`.
-. Füllen Sie die Datei entsprechend den Anforderungen Ihrer Umgebung mit Optionen für die Ressourcenbegrenzung für Trident Container.
+. Füllen Sie die Datei mit Ressourcenlimitierungsoptionen für Trident Protect-Container entsprechend den Anforderungen Ihrer Umgebung.
 +
 Die folgende Beispielkonfigurationsdatei zeigt die verfügbaren Einstellungen und enthält die Standardvaules für jedes Ressourcenlimit:
 

@@ -2,9 +2,9 @@
 sidebar: sidebar 
 permalink: trident-protect/trident-protect-manage-applications.html 
 keywords: appvault, data protection, custom resource, namespace, application, cluster 
-summary: Sie können Trident Protect auf eine Anwendung aufmerksam machen, die Sie verwalten möchten, indem Sie eine Anwendungs-CR und eine zugehörige AppVault CR erstellen. 
+summary: Sie können Trident Protect über eine Anwendung informieren, die Sie verwalten möchten, indem Sie eine Anwendungs-CR und eine zugehörige AppVault-CR erstellen. 
 ---
-= Definieren Sie mit Trident Protect eine Applikation für das Management
+= Definieren Sie eine Anwendung für die Verwaltung mit Trident Protect.
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -14,19 +14,19 @@ summary: Sie können Trident Protect auf eine Anwendung aufmerksam machen, die S
 
 
 [role="lead"]
-Sie können eine Anwendung definieren, die Sie mit Trident Protect verwalten möchten, indem Sie eine Anwendungs-CR und einen zugehörigen AppVault CR erstellen.
+Sie können eine Anwendung, die Sie mit Trident Protect verwalten möchten, definieren, indem Sie eine Anwendungs-CR und eine zugehörige AppVault-CR erstellen.
 
 
 
 == Erstellen Sie ein AppVault CR
 
-Sie müssen einen AppVault CR erstellen, der bei der Durchführung von Datenschutzvorgängen auf der Anwendung verwendet wird. Der AppVault CR muss sich auf dem Cluster befinden, auf dem Trident Protect installiert ist. Der AppVault CR ist spezifisch für Ihre Umgebung. Beispiele für AppVault CRS finden Sie unter link:trident-protect-appvault-custom-resources.html["Benutzerdefinierte Ressourcen von AppVault."]
+Sie müssen einen AppVault CR erstellen, der bei der Durchführung von Datenschutzoperationen an der Anwendung verwendet wird, und der AppVault CR muss sich auf dem Cluster befinden, auf dem Trident Protect installiert ist. Die AppVault-CR ist spezifisch für Ihre Umgebung; Beispiele für AppVault-CRs finden Sie unterlink:trident-protect-appvault-custom-resources.html["Benutzerdefinierte Ressourcen von AppVault."]
 
 
 
 == Definieren Sie eine Anwendung
 
-Sie müssen jede Applikation definieren, die Sie mit Trident Protect managen möchten. Sie können eine Anwendung für die Verwaltung definieren, indem Sie entweder manuell eine Anwendungs-CR erstellen oder die Trident Protect-CLI verwenden.
+Sie müssen jede Anwendung definieren, die Sie mit Trident Protect verwalten möchten. Sie können eine Anwendung zur Verwaltung definieren, indem Sie entweder manuell eine Anwendungs-CR erstellen oder die Trident Protect CLI verwenden.
 
 [role="tabbed-block"]
 ====
