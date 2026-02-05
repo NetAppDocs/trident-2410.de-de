@@ -23,7 +23,7 @@ Sie können Trident Protect 24.10 so konfigurieren, dass das Einfrieren und Auft
 kubectl set env deployment/trident-protect-controller-manager NEPTUNE_VM_FREEZE=true -n trident-protect
 ----
 .Trident Protect 24.10.1 und neuer
-Ab Trident Protect 24.10.1 friert Trident Protect KubeVirt-Dateisysteme während Datensicherungsvorgängen automatisch ein und wieder auf. Optional können Sie dieses automatische Verhalten mit folgendem Befehl deaktivieren:
+Ab Trident Protect 24.10.1 friert Trident Protect KubeVirt-Dateisysteme während Datensicherungsoperationen automatisch ein und taut sie wieder auf. Optional können Sie dieses automatische Verhalten mit dem folgenden Befehl deaktivieren:
 
 [source, console]
 ----
