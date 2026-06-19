@@ -27,7 +27,7 @@ Die Deinstallation und Neuinstallation von Trident dient als Upgrade. Wenn Sie T
 ----
 ./tridentctl uninstall -n <namespace>
 ----
-. Installieren Sie Trident neu. Siehe link:../trident-get-started/kubernetes-deploy-tridentctl.html["Installieren Sie Trident mit tridentctl"].
+. Installieren Sie Trident erneut. Siehe link:../trident-install/kubernetes-deploy-tridentctl.html["Installieren Sie Trident mit tridentctl"].
 
 
 
