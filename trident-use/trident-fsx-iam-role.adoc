@@ -19,6 +19,7 @@ NOTE: Um sich mit einer AWS IAM-Rolle zu authentifizieren, müssen Sie über ein
 
 
 
+[[create-aws-secret-manager-secret]]
 == Erstellen Sie den AWS Secret Manager-Schlüssel
 
 Dieses Beispiel erstellt einen AWS Secret Manager-Schlüssel, um Trident-CSI-Anmeldedaten zu speichern:
@@ -30,6 +31,7 @@ aws secretsmanager create-secret --name trident-secret --description "Trident CS
 ----
 
 
+[[create-iam-policy]]
 == IAM-Richtlinie erstellen
 
 In den folgenden Beispielen wird eine IAM-Richtlinie über die AWS-CLI erstellt:
@@ -72,6 +74,7 @@ policy.json:
 ----
 
 
+[[create-an-iam-role-for-the-service-account]]
 === Erstellen Sie eine IAM-Rolle für das Dienstkonto
 
 [role="tabbed-block"]

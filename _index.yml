@@ -58,7 +58,7 @@ indexpage:
   - title: Demos und Lernprogramme
     links:
     - title: Trident-Videos
-      url: https://tv.netapp.com/detail/video/5995831475001/using-trident-with-kubernetes
+      url: https://media.netapp.com/video-detail/c5bebae0-aab6-5fed-ae16-df6a3a8b260d/netapp-trident-advanced-data-protection-for-kubernetes-applications
   - title: Blogs und Community
     links:
     - title: Kubernetes Hub

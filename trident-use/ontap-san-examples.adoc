@@ -16,6 +16,7 @@ Erfahren Sie, wie Sie ONTAP-SAN-Treiber mit Ihrer Trident-Installation erstellen
 
 
 
+[[backend-configuration-options]]
 == Back-End-Konfigurationsoptionen
 
 Die Back-End-Konfigurationsoptionen finden Sie in der folgenden Tabelle:
@@ -131,6 +132,7 @@ Verwenden Sie `formatOptions` zum Angeben von Befehlszeilenargumenten für den `
 |===
 
 
+[[recommendations-for-using-formatoptions]]
 === Empfehlungen für die Verwendung von FormatOptions
 
 Trident empfiehlt die folgende Option, um den Formatierungsprozess zu beschleunigen:
@@ -142,6 +144,7 @@ Trident empfiehlt die folgende Option, um den Formatierungsprozess zu beschleuni
 
 
 
+[[backend-configuration-options-for-provisioning-volumes]]
 == Back-End-Konfigurationsoptionen für die Bereitstellung von Volumes
 
 Mit diesen Optionen können Sie die Standardbereitstellung im Abschnitt der Konfiguration steuern `defaults`. Ein Beispiel finden Sie unten in den Konfigurationsbeispielen.
@@ -188,6 +191,7 @@ Mit diesen Optionen können Sie die Standardbereitstellung im Abschnitt der Konf
 |===
 
 
+[[volume-provisioning-examples]]
 === Beispiele für die Volume-Bereitstellung
 
 Hier ein Beispiel mit definierten Standardwerten:
@@ -233,6 +237,7 @@ Die Größenanpassung ist derzeit die einzige Möglichkeit, die neue Berechnung 
 
 
 
+[[minimal-configuration-examples]]
 == Minimale Konfigurationsbeispiele
 
 Die folgenden Beispiele zeigen grundlegende Konfigurationen, bei denen die meisten Parameter standardmäßig belassen werden. Dies ist der einfachste Weg, ein Backend zu definieren.
@@ -416,6 +421,7 @@ defaults:
 ====
 
 
+[[examples-of-backends-with-virtual-pools]]
 == Beispiele für Back-Ends mit virtuellen Pools
 
 In diesen Beispiel-Back-End-Definitionsdateien werden spezifische Standardwerte für alle Speicherpools festgelegt, z. B. `spaceReserve` bei none, `spaceAllocation` bei false und `encryption` bei false. Die virtuellen Pools werden im Abschnitt Speicher definiert.
@@ -557,6 +563,7 @@ storage:
 ====
 
 
+[[map-backends-to-storageclasses]]
 == Back-Ends StorageClasses zuordnen
 
 Die folgenden StorageClass-Definitionen beziehen sich auf <<Beispiele für Back-Ends mit virtuellen Pools>>. Mit dem `parameters.selector` Feld ruft jede StorageClass ab, welche virtuellen Pools zum Hosten eines Volumes verwendet werden können. Auf dem Volume werden die Aspekte im ausgewählten virtuellen Pool definiert.

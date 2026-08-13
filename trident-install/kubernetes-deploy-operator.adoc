@@ -16,6 +16,7 @@ Sie können den Trident-Operator manuell bereitstellen, um Trident zu installier
 
 
 
+[[critical-information-about-trident-24-10]]
 == Wichtige Informationen zu Trident 24.10
 
 *Sie müssen die folgenden wichtigen Informationen über Trident lesen.*
@@ -36,12 +37,13 @@ Die Verwendung einer nicht-Multipathing-Konfiguration oder die Verwendung von `f
 ====
 
 
+[[manually-deploy-the-trident-operator-and-install-trident]]
 == Trident-Operator kann manuell implementiert und Trident installiert werden
 
 Überprüfen Sie link:../trident-install/kubernetes-deploy.html["Die Übersicht über die Installation"], um sicherzustellen, dass Sie die Installationsvoraussetzungen erfüllt und die richtige Installationsoption für Ihre Umgebung ausgewählt haben.
 
 .Bevor Sie beginnen
-Bevor Sie mit der Installation beginnen, melden Sie sich am Linux-Host an und vergewissern Sie sich, dass dieser ein funktionierendes link:requirements.html["Unterstützter Kubernetes-Cluster"] verwaltet und dass Sie über die erforderlichen Berechtigungen verfügen.
+Bevor Sie mit der Installation beginnen, melden Sie sich am Linux-Host an und vergewissern Sie sich, dass dieser ein funktionierendes link:../trident-get-started/requirements.html["Unterstützter Kubernetes-Cluster"] verwaltet und dass Sie über die erforderlichen Berechtigungen verfügen.
 
 
 NOTE: Verwenden Sie bei OpenShift `oc` statt `kubectl` in allen folgenden Beispielen, und melden Sie sich zuerst als *System:admin* an, indem Sie oder `oc login -u kube-admin` ausführen `oc login -u system:admin`.
@@ -72,6 +74,7 @@ kubectl run -i --tty ping --image=busybox --restart=Never --rm -- \
 ====
 
 
+[[step-1-download-the-trident-installer-package]]
 === Schritt 1: Laden Sie das Trident Installer-Paket herunter
 
 Das Trident-Installationspaket enthält alles, was Sie für die Bereitstellung des Trident-Bedieners und die Installation von Trident benötigen. Laden Sie die neueste Version des Trident-Installers herunter und extrahieren Sie sie auslink:https://github.com/NetApp/trident/releases/latest["Die Sektion _Assets_ auf GitHub"^].
@@ -84,6 +87,7 @@ cd trident-installer
 ----
 
 
+[[step-2-create-the-tridentorchestrator-crd]]
 === Schritt 2: Erstellen Sie die `TridentOrchestrator` CRD
 
 Erstellen Sie die `TridentOrchestrator` Benutzerdefinierte Ressourcendefinition (CRD).  Sie erstellen eine `TridentOrchestrator` Benutzerdefinierte Ressource später.  Verwenden Sie die entsprechende CRD YAML-Version in `deploy/crds` zur Erstellung der `TridentOrchestrator` CRD.
@@ -94,6 +98,7 @@ kubectl create -f deploy/crds/trident.netapp.io_tridentorchestrators_crd_post1.1
 ----
 
 
+[[step-3-deploy-the-trident-operator]]
 === Schritt 3: Implementieren des Trident-Operators
 
 Das Trident-Installationsprogramm stellt eine Bundle-Datei zur Verfügung, mit der der Operator installiert und zugehörige Objekte erstellt werden können. Die Bundle-Datei ist eine einfache Möglichkeit, den Operator bereitzustellen und Trident mit einer Standardkonfiguration zu installieren.
@@ -147,6 +152,7 @@ IMPORTANT: Es sollte nur eine Instanz* des Operators in einem Kubernetes-Cluster
 
 
 
+[[step-4-create-the-tridentorchestrator-and-install-trident]]
 === Schritt 4: Erstellen Sie die `TridentOrchestrator` Trident und installieren Sie sie
 
 Sie können jetzt die Trident erstellen `TridentOrchestrator` und installieren. Optional können Sie link:kubernetes-customize-deploy.html["Anpassung der Trident Installation"]die Attribute in der Spezifikation verwenden `TridentOrchestrator`.
@@ -195,12 +201,14 @@ Events:
 ----
 
 
+[[verify-the-installation]]
 == Überprüfen Sie die Installation
 
 Die Installation kann auf verschiedene Weise überprüft werden.
 
 
 
+[[using-tridentorchestrator-status]]
 === Status `TridentOrchestrator` wird verwendet
 
 Der Status von `TridentOrchestrator` gibt an, ob die Installation erfolgreich war, und zeigt die Version von Trident installiert an. Während der Installation ändert sich `Installing` der Status von `TridentOrchestrator` in `Installed`. Wenn Sie den Status beobachten `Failed` und der Bediener nicht in der Lage ist, sich selbst zu erholen, link:../troubleshooting.html["Prüfen Sie die Protokolle"].
@@ -233,6 +241,7 @@ Der Status von `TridentOrchestrator` gibt an, ob die Installation erfolgreich wa
 |===
 
 
+[[using-pod-creation-status]]
 === Den Status der Pod-Erstellung verwenden
 
 Sie können überprüfen, ob die Trident-Installation abgeschlossen wurde, indem Sie den Status der erstellten Pods überprüfen:
@@ -250,6 +259,7 @@ trident-operator-766f7b8658-ldzsv          1/1     Running   0           3m
 ----
 
 
+[[using-tridentctl]]
 === Verwenden `tridentctl`
 
 Mit können Sie `tridentctl` die installierte Version von Trident überprüfen.

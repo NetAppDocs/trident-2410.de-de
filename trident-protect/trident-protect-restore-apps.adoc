@@ -21,6 +21,7 @@ NOTE: Wenn Sie eine Anwendung wiederherstellen, werden alle für die Anwendung k
 
 
 
+[[namespace-annotations-and-labels-during-restore-and-failover-operations]]
 == Namespace-Annotationen und -Labels bei Restore- und Failover-Vorgängen
 
 Während von Restore- und Failover-Vorgängen werden Labels und Annotationen im Ziel-Namespace so angefertigt, dass sie den Labels und Annotationen im Quell-Namespace entsprechen. Beschriftungen oder Anmerkungen aus dem Quell-Namespace, die nicht im Ziel-Namespace vorhanden sind, werden hinzugefügt. Alle bereits vorhandenen Beschriftungen oder Anmerkungen werden überschrieben, um dem Wert aus dem Quell-Namespace zu entsprechen. Beschriftungen oder Anmerkungen, die nur im Ziel-Namespace vorhanden sind, bleiben unverändert.
@@ -38,6 +39,7 @@ Wenn Sie die Quellanwendung mit Helm installiert haben `--create-namespace` Flag
 
 
 
+[[example]]
 === Beispiel
 
 Im folgenden Beispiel wird ein Quell- und Ziel-Namespace präsentiert, der jeweils unterschiedliche Annotationen und Labels enthält. Sie können den Status des Ziel-Namespace vor und nach dem Vorgang anzeigen und sehen, wie die Annotationen und Labels im Ziel-Namespace kombiniert oder überschrieben werden.
@@ -100,6 +102,7 @@ In der folgenden Tabelle wird der Status des Beispiel-Ziel-Namespace nach der Wi
 |===
 
 
+[[restore-from-a-backup-to-a-different-namespace]]
 == Wiederherstellung aus einem Backup in einem anderen Namespace
 
 Wenn Sie eine Sicherung mithilfe eines BackupRestore CR in einen anderen Namespace wiederherstellen, stellt Trident Protect die Anwendung in einem neuen Namespace wieder her und erstellt einen Anwendungs-CR für die wiederhergestellte Anwendung. Um die wiederhergestellte Anwendung zu schützen, erstellen Sie bei Bedarf Backups oder Snapshots oder legen Sie einen Schutzzeitplan fest.
@@ -209,6 +212,7 @@ tridentctl-protect create backuprestore <my_restore_name> --backup <backup_names
 ====
 
 
+[[restore-from-a-backup-to-the-original-namespace]]
 == Wiederherstellung von einem Backup in den ursprünglichen Namespace
 
 Sie können ein Backup im ursprünglichen Namespace jederzeit wiederherstellen.
@@ -312,6 +316,7 @@ tridentctl-protect create backupinplacerestore <my_restore_name> --backup <names
 ====
 
 
+[[restore-from-a-backup-to-a-different-cluster]]
 == Wiederherstellung von einem Backup in einem anderen Cluster
 
 Sie können ein Backup in einem anderen Cluster wiederherstellen, wenn ein Problem mit dem ursprünglichen Cluster auftritt.
@@ -416,6 +421,7 @@ tridentctl-protect create backuprestore <restore_name> --namespace-mapping <sour
 ====
 
 
+[[restore-from-a-snapshot-to-a-different-namespace]]
 == Wiederherstellung von einem Snapshot in einem anderen Namespace
 
 Sie können Daten aus einem Snapshot mithilfe einer benutzerdefinierten Ressourcendatei (CR-Datei) entweder in einem anderen Namensraum oder im ursprünglichen Quellnamensraum wiederherstellen. Wenn Sie einen Snapshot mithilfe eines SnapshotRestore CR in einem anderen Namespace wiederherstellen, stellt Trident Protect die Anwendung in einem neuen Namespace wieder her und erstellt einen Anwendungs-CR für die wiederhergestellte Anwendung. Um die wiederhergestellte Anwendung zu schützen, erstellen Sie bei Bedarf Backups oder Snapshots oder legen Sie einen Schutzzeitplan fest.
@@ -530,6 +536,7 @@ tridentctl-protect create snapshotrestore <my_restore_name> --snapshot <namespac
 ====
 
 
+[[restore-from-a-snapshot-to-the-original-namespace]]
 == Wiederherstellung von einem Snapshot im ursprünglichen Namespace
 
 Sie können einen Snapshot jederzeit im ursprünglichen Namespace wiederherstellen.
@@ -633,6 +640,7 @@ tridentctl-protect create snapshotinplacerestore <my_restore_name> --snapshot <s
 ====
 
 
+[[check-the-status-of-a-restore-operation]]
 == Überprüfen Sie den Status eines Wiederherstellungsvorgangs
 
 Sie können die Befehlszeile verwenden, um den Status eines Wiederherstellungsvorgangs zu überprüfen, der gerade ausgeführt wird, abgeschlossen wurde oder fehlgeschlagen ist.

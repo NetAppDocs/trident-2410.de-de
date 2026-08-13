@@ -16,6 +16,7 @@ Erfahren Sie mehr über die Ports, die Trident für die Kommunikation verwendet.
 
 
 
+[[trident-ports]]
 == Trident-Ports
 
 Trident kommuniziert über folgende Ports:

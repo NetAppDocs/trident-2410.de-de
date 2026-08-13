@@ -13,6 +13,7 @@ summary: 'Durch den Einsatz von Trident mit Amazon FSX for NetApp ONTAP kann sic
 
 
 
+[[ontap-san-and-nas-driver-integration]]
 == Integration von ONTAP-SAN- und NAS-Treibern
 
 Um ein Storage-Backend zu erstellen, müssen Sie eine Konfigurationsdatei im JSON- oder YAML-Format erstellen. Die Datei muss den gewünschten Speichertyp (NAS oder SAN), das Dateisystem und die SVM angeben, von der sie abgerufen werden soll, und wie die Authentifizierung mit ihr durchgeführt werden soll. Im folgenden Beispiel wird gezeigt, wie NAS-basierter Storage definiert wird und wie ein AWS-Schlüssel zum Speichern der Zugangsdaten für die zu verwendende SVM verwendet wird:
@@ -100,6 +101,7 @@ backend-tbc-ontap-nas        tbc-ontap-nas        933e0071-66ce-4324-b9ff-f96d91
 
 
 
+[[fsx-for-ontap-driver-details]]
 == FSX für ONTAP-Treiber Details
 
 Sie können Trident mithilfe der folgenden Treiber in Amazon FSX for NetApp ONTAP integrieren:
@@ -132,6 +134,7 @@ backend-fsx-ontap-nas   backend-fsx-ontap-nas   7a551921-997c-4c37-a1d1-f2f4c87f
 ----
 
 
+[[backend-advanced-configuration-and-examples]]
 == Erweiterte Back-End-Konfiguration und Beispiele
 
 Die Back-End-Konfigurationsoptionen finden Sie in der folgenden Tabelle:
@@ -225,6 +228,7 @@ Die Back-End-Konfigurationsoptionen finden Sie in der folgenden Tabelle:
 |===
 
 
+[[backend-configuration-options-for-provisioning-volumes]]
 == Back-End-Konfigurationsoptionen für die Bereitstellung von Volumes
 
 Mit diesen Optionen können Sie die Standardbereitstellung im Abschnitt der Konfiguration steuern `defaults`. Ein Beispiel finden Sie unten in den Konfigurationsbeispielen.
@@ -258,7 +262,7 @@ Mit diesen Optionen können Sie die Standardbereitstellung im Abschnitt der Konf
 | `encryption` | Aktivieren Sie NetApp Volume Encryption (NVE) auf dem neuen Volume, Standardeinstellung ist `false`. NVE muss im Cluster lizenziert und aktiviert sein, damit diese Option verwendet werden kann. Wenn auf dem Backend NAE aktiviert ist, wird jedes in Trident bereitgestellte Volume NAE aktiviert. Weitere Informationen finden Sie unter link:../trident-reco/security-reco.html["Funktionsweise von Trident mit NVE und NAE"]. | `false` 
 
 
-| `luksEncryption` | Aktivieren Sie die LUKS-Verschlüsselung. Siehe link:../trident-reco/security-reco.html#Use-Linux-Unified-Key-Setup-(LUKS)["Linux Unified Key Setup (LUKS) verwenden"]. Nur SAN | „“ 
+| `luksEncryption` | LUKS-Verschlüsselung aktivieren. Siehe link:../trident-reco/security-luks.html["Linux Unified Key Setup (LUKS) verwenden"]. Nur SAN. | „“ 
 
 
 | `tieringPolicy` | Tiering-Richtlinie für die Nutzung	`none` | `snapshot-only` Für Konfiguration vor ONTAP 9 5 SVM-DR 
@@ -271,6 +275,7 @@ Mit diesen Optionen können Sie die Standardbereitstellung im Abschnitt der Konf
 |===
 
 
+[[prepare-to-provision-smb-volumes]]
 == Vorbereitung zur Bereitstellung von SMB Volumes
 
 Sie können SMB-Volumes mit dem Treiber bereitstellen `ontap-nas`. Führen Sie die folgenden Schritte aus, bevor Sie <<Integration von ONTAP-SAN- und NAS-Treibern>>die Schritte ausführen.

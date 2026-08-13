@@ -16,6 +16,7 @@ Trident ist ein vollständig von NetApp unterstütztes Open-Source-Projekt. Es w
 
 
 
+[[what-is-trident]]
 == Was ist Trident?
 
 NetApp Trident ermöglicht die Nutzung und das Management von Storage-Ressourcen über alle gängigen NetApp Storage-Plattformen hinweg, in der Public Cloud oder vor Ort, einschließlich ONTAP (AFF, FAS, Select, Cloud, Amazon FSX for NetApp ONTAP), Element Software (NetApp HCI, SolidFire), Azure NetApp Files Service und Cloud Volumes Service on Google Cloud.
@@ -29,6 +30,7 @@ NOTE: Wenn Sie Kubernetes zum ersten Mal verwenden, sollten Sie sich mit der ver
 
 
 
+[[kubernetes-integration-with-netapp-products]]
 == Kubernetes-Integration in NetApp Produkte
 
 Das NetApp Portfolio an Storage-Produkten kann in viele Aspekte eines Kubernetes Clusters integriert werden und bietet erweiterte Datenmanagement-Funktionen, mit denen die Funktionalität, Funktionalität, Performance und Verfügbarkeit der Kubernetes-Implementierung verbessert werden.

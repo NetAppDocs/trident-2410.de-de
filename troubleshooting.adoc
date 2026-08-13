@@ -16,6 +16,7 @@ Verwenden Sie die hier angegebenen Zeiger zur Fehlerbehebung bei Problemen, die 
 
 
 
+[[general-troubleshooting]]
 == Allgemeine Fehlerbehebung
 
 * Wenn der Trident Pod nicht ordnungsgemäß ausgeführt werden kann (wenn z. B. der Trident Pod in der Phase mit weniger als zwei einsatzbereiten Containern stecken bleibt `ContainerCreating`), wird ausgeführt `kubectl -n trident describe deployment trident` und kann zusätzliche Einblicke bieten. `kubectl -n trident describe pod trident-********-****` Auch das Abrufen von Kubelet-Protokollen (zum Beispiel via `journalctl -xeu kubelet`) kann hilfreich sein.
@@ -68,6 +69,7 @@ Mit tridentctl installiert::
 
 
 
+[[unsuccessful-trident-deployment-using-the-operator]]
 == Die Bereitstellung von Trident mit dem Operator ist fehlgeschlagen
 
 Wenn Sie Trident mit dem Operator bereitstellen, ändert sich `Installing` der Status von `TridentOrchestrator` in `Installed`. Wenn Sie den Status beobachten `Failed` und der Operator sich nicht selbst wiederherstellen kann, sollten Sie die Protokolle des Operators überprüfen, indem Sie den folgenden Befehl ausführen:
@@ -135,6 +137,7 @@ Um das Problem zu beheben, sollten Sie den CR bearbeiten `TridentOrchestrator`. 
 
 
 
+[[unsuccessful-trident-deployment-using-tridentctl]]
 == Erfolglose Trident-Bereitstellung mit `tridentctl`
 
 Um herauszufinden, was schief gelaufen ist, können Sie das Installationsprogramm mit dem  Argument erneut ausführen, das den ``-d``Debug-Modus aktiviert und Ihnen hilft, das Problem zu verstehen:
@@ -157,6 +160,7 @@ INFO Trident uninstallation succeeded.
 ----
 
 
+[[completely-remove-trident-and-crds]]
 == Entfernen Sie Trident und CRDs vollständig
 
 Sie können Trident und alle erstellten CRDs und zugehörigen benutzerdefinierten Ressourcen vollständig entfernen.
@@ -196,12 +200,14 @@ tridentctl obliviate crd
 ====
 
 
+[[nvme-node-unstaging-failure-with-rwx-raw-block-namespaces-o-kubernetes-1-26]]
 == Fehler beim Entstopen des NVMe-Node bei den RWX-RAW-Block-Namespaces o Kubernetes 1.26
 
 Wenn Sie Kubernetes 1.26 ausführen, schlägt das Entstauen der Nodes möglicherweise fehl, wenn NVMe/TCP mit RWX-unformatierten Block-Namespaces verwendet wird. Die folgenden Szenarien bieten eine Behelfslösung für den Fehler. Alternativ können Sie ein Upgrade von Kubernetes auf 1.27 durchführen.
 
 
 
+[[deleted-the-namespace-and-pod]]
 === Namespace und Pod wurden gelöscht
 
 Stellen Sie sich ein Szenario vor, in dem ein über Trident verwalteter Namespace (persistentes Volume NVMe) mit einem Pod verbunden ist. Wenn Sie den Namespace direkt aus dem ONTAP-Backend löschen, bleibt der Entstempungsprozess hängen, nachdem Sie versucht haben, den Pod zu löschen. Dieses Szenario beeinträchtigt nicht das Kubernetes-Cluster oder andere Funktionen.
@@ -211,6 +217,7 @@ Heben Sie das persistente Volume (entsprechend dem Namespace) vom entsprechenden
 
 
 
+[[blocked-datalifs]]
 === Blockierte Daten-LIFs
 
  If you block (or bring down) all the dataLIFs of the NVMe Trident backend, the unstaging process gets stuck when you attempt to delete the pod. In this scenario, you cannot run any NVMe CLI commands on the Kubernetes node.
@@ -219,6 +226,7 @@ Das DataLIFS wird zur Wiederherstellung der vollen Funktionalität angezeigt.
 
 
 
+[[deleted-namespace-mapping]]
 === Namespace-Zuordnung wurde gelöscht
 
  If you remove the `hostNQN` of the worker node from the corresponding subsystem, the unstaging process gets stuck when you attempt to delete the pod. In this scenario, you cannot run any NVMe CLI commands on the Kubernetes node.

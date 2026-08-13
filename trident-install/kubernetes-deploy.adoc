@@ -16,6 +16,7 @@ Um sicherzustellen, dass Trident in einer Vielzahl von Umgebungen und Organisati
 
 
 
+[[critical-information-about-trident-24-10]]
 == Wichtige Informationen zu Trident 24.10
 
 *Sie müssen die folgenden wichtigen Informationen über Trident lesen.*
@@ -36,11 +37,12 @@ Die Verwendung einer nicht-Multipathing-Konfiguration oder die Verwendung von `f
 ====
 
 
+[[before-you-begin]]
 == Bevor Sie beginnen
 
 Unabhängig von Ihrem Installationspfad müssen Sie Folgendes haben:
 
-* Vollständige Berechtigungen für einen unterstützten Kubernetes-Cluster, auf dem eine unterstützte Kubernetes-Version ausgeführt wird und die erforderlichen Funktionen aktiviert sind. Überprüfen Sie die link:/trident-get-started/requirements.html["Anforderungen"] für Details.
+* Vollständige Berechtigungen für einen unterstützten Kubernetes-Cluster, auf dem eine unterstützte Kubernetes-Version ausgeführt wird und die erforderlichen Funktionen aktiviert sind. Überprüfen Sie die link:../trident-get-started/requirements.html["Anforderungen"] für Details.
 * Zugriff auf ein unterstütztes NetApp Storage-System.
 * Kann Volumes von allen Kubernetes Worker-Nodes aus mounten
 * Ein Linux-Host mit `kubectl` (oder `oc`, falls Sie OpenShift verwenden) installiert und für das Management des Kubernetes-Clusters konfiguriert, den Sie verwenden möchten.
@@ -53,12 +55,14 @@ TIP: Falls Sie sich noch nicht mit dem link:../trident-get-started/intro.html["G
 
 
 
+[[choose-your-installation-method]]
 == Wählen Sie Ihre Installationsmethode
 
-Wählen Sie die für Sie richtige Installationsmethode aus. Sie sollten auch die Überlegungen für durchgehenlink:kubernetes-deploy.html#move-between-installation-methods["Bewegen zwischen Methoden"], bevor Sie Ihre Entscheidung treffen.
+Wählen Sie die für Sie passende Installationsmethode. Sie sollten auch die Überlegungen zu link:kubernetes-deploy.html#moving-between-installation-methods["Bewegen zwischen Methoden"] prüfen, bevor Sie Ihre Entscheidung treffen.
 
 
 
+[[using-the-trident-operator]]
 === Verwenden des Betreibers von Trident
 
 Ob manuell oder mit Helm – der Trident-Operator ist eine großartige Möglichkeit, die Installation zu vereinfachen und Trident-Ressourcen dynamisch zu verwalten. Sie können sogar link:../trident-install/kubernetes-customize-deploy.html["Individuelle Anpassung der Trident Implementierung"] unter Verwendung der Attribute in der  `TridentOrchestrator` Custom Resource (CR).
@@ -120,6 +124,7 @@ NOTE: Wenn das Cluster auf eine nicht unterstützte Version aktualisiert wird, v
 ====
 
 
+[[using-tridentctl]]
 === Verwenden `tridentctl`
 
 Wenn Sie eine vorhandene Bereitstellung haben, die aktualisiert werden muss, oder wenn Sie Ihre Bereitstellung stark anpassen möchten, sollten Sie dies in Betracht ziehen. Dies ist die konventionelle Methode zur Bereitstellung von Trident.
@@ -131,6 +136,7 @@ NOTE: Ab der Version 22.04 werden AES-Schlüssel nicht mehr bei jeder Installati
 
 
 
+[[choose-your-installation-mode]]
 == Wählen Sie den Installationsmodus aus
 
 Bestimmen Sie Ihren Bereitstellungsprozess auf der Grundlage des von Ihrem Unternehmen benötigten _Installations-Modus_ (Standard, Offline oder Remote).
@@ -170,6 +176,7 @@ Hier finden Sie einen allgemeinen Überblick über den Remote-Installationsproze
 ====
 
 
+[[select-the-process-based-on-your-method-and-mode]]
 == Wählen Sie den Prozess basierend auf Methode und Modus aus
 
 Nachdem Sie Ihre Entscheidungen getroffen haben, wählen Sie den entsprechenden Prozess aus.
@@ -199,6 +206,7 @@ link:kubernetes-deploy-tridentctl.html["Standard- oder Offline-Installation"]
 |===
 
 
+[[moving-between-installation-methods]]
 == Wechseln zwischen den Installationsmethoden
 
 Sie können sich entscheiden, Ihre Installationsmethode zu ändern. Bevor Sie dies tun, sollten Sie folgendes bedenken:
@@ -210,6 +218,7 @@ Sie können sich entscheiden, Ihre Installationsmethode zu ändern. Bevor Sie di
 
 
 
+[[other-known-configuration-options]]
 == Andere bekannte Konfigurationsoptionen
 
 Bei der Installation von Trident auf VMware Tanzu Portfolio-Produkten:

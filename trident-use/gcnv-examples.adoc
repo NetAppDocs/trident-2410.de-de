@@ -16,6 +16,7 @@ Informieren Sie sich über die NFS-Back-End-Konfigurationsoptionen für Google C
 
 
 
+[[backend-configuration-options]]
 == Back-End-Konfigurationsoptionen
 
 Jedes Back-End stellt Volumes in einer einzigen Google Cloud-Region bereit. Um Volumes in anderen Regionen zu erstellen, können Sie zusätzliche Back-Ends definieren.
@@ -68,6 +69,7 @@ Jedes Back-End stellt Volumes in einer einzigen Google Cloud-Region bereit. Um V
 |===
 
 
+[[volume-provisioning-options]]
 == Optionen zur Volume-Bereitstellung
 
 Sie können die standardmäßige Volume-Bereitstellung im Abschnitt der Konfigurationsdatei steuern `defaults`.
@@ -90,6 +92,7 @@ Sie können die standardmäßige Volume-Bereitstellung im Abschnitt der Konfigur
 |===
 
 
+[[example-configurations]]
 == Beispielkonfigurationen
 
 Die folgenden Beispiele zeigen grundlegende Konfigurationen, bei denen die meisten Parameter standardmäßig belassen werden. Dies ist der einfachste Weg, ein Backend zu definieren.
@@ -373,6 +376,7 @@ supportedTopologies:
 ====
 
 
+[[whats-next]]
 == Was kommt als Nächstes?
 
 Führen Sie nach dem Erstellen der Back-End-Konfigurationsdatei den folgenden Befehl aus:
@@ -400,10 +404,12 @@ Nachdem Sie das Problem mit der Konfigurationsdatei identifiziert und behoben ha
 
 
 
+[[more-examples]]
 == Weitere Beispiele
 
 
 
+[[storage-class-definition-examples]]
 === Beispiele für Definitionen von Storage-Klassen
 
 Im Folgenden finden Sie eine grundlegende `StorageClass` Definition, die sich auf das Backend oben bezieht.
@@ -457,6 +463,7 @@ Weitere Informationen zu Speicherklassen finden Sie unter link:../trident-use/cr
 
 
 
+[[pvc-definition-example]]
 === Beispiel für eine PVC-Definition
 
 [listing]

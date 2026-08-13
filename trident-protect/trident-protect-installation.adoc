@@ -21,6 +21,7 @@ NOTE: Standardmäßig erfasst Trident Protect Supportinformationen, die bei der 
 
 
 
+[[install-trident-protect]]
 == Installieren Sie Trident Protect
 
 [role="tabbed-block"]
@@ -171,6 +172,7 @@ helm install trident-protect netapp-trident-protect/trident-protect --set autoSu
 ====
 
 
+[[specify-trident-protect-container-resource-limits]]
 == Legen Sie die Ressourcenbeschränkungen für Trident Protect-Container fest.
 
 Sie können nach der Installation von Trident Protect eine Konfigurationsdatei verwenden, um Ressourcenlimits für Trident Protect-Container festzulegen. Durch das Festlegen von Ressourcenlimits können Sie steuern, wie viele der Clusterressourcen von Trident Protect-Operationen verbraucht werden.

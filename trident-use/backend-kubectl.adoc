@@ -16,6 +16,7 @@ Ein Backend definiert die Beziehung zwischen Trident und einem Storage-System. E
 
 
 
+[[tridentbackendconfig]]
 == `TridentBackendConfig`
 
 `TridentBackendConfig` (`tbc`, `tbconfig`, `tbackendconfig`) Ist ein Frontend, namested CRD, das Ihnen ermöglicht, Trident-Backends mit verwalten `kubectl`. Kubernetes- und Storage-Administratoren können jetzt Back-Ends direkt über die Kubernetes-CLI erstellen und managen(`tridentctl`, ohne dass ein dediziertes Befehlszeilendienstprogramm erforderlich ist ).
@@ -72,6 +73,7 @@ TIP: Back-Ends, die mit erstellt wurden `tridentctl`, haben kein zugeordnetes `T
 
 
 
+[[steps-overview]]
 == Schritte im Überblick
 
 Um ein neues Backend mit zu erstellen `kubectl`, sollten Sie Folgendes tun:
@@ -84,6 +86,7 @@ Nachdem Sie ein Backend erstellt haben, können Sie dessen Status mithilfe von b
 
 
 
+[[step-1-create-a-kubernetes-secret]]
 == Schritt: Ein Kubernetes Secret erstellen
 
 Erstellen Sie einen geheimen Schlüssel, der die Anmeldedaten für den Zugriff für das Backend enthält. Dies ist nur bei jedem Storage Service/jeder Plattform möglich. Hier ein Beispiel:
@@ -187,6 +190,7 @@ Der in diesem Schritt erstellte Schlüssel wird im Feld des `TridentBackendConfi
 
 
 
+[[step-2-create-the-tridentbackendconfig-cr]]
 == Schritt 2: Erstellen Sie den `TridentBackendConfig` CR
 
 Sie können jetzt Ihren CR erstellen `TridentBackendConfig`. In diesem Beispiel wird mithilfe des unten dargestellten Objekts ein Backend erstellt, das den Treiber `TridentBackendConfig` verwendet `ontap-san`:
@@ -213,6 +217,7 @@ spec:
 ----
 
 
+[[step-3-verify-the-status-of-the-tridentbackendconfig-cr]]
 == Schritt 3: Überprüfen Sie den Status des `TridentBackendConfig` CR
 
 Nachdem Sie den CR erstellt `TridentBackendConfig` haben, können Sie den Status überprüfen. Das folgende Beispiel zeigt:
@@ -243,6 +248,7 @@ In dieser Phase wird erfolgreich ein Backend erstellt! Es gibt mehrere Operation
 
 
 
+[[optional-step-4-get-more-details]]
 == (Optional) Schritt 4: Weitere Informationen
 
 Sie können den folgenden Befehl ausführen, um weitere Informationen über Ihr Backend zu erhalten:

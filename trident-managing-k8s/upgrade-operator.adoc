@@ -12,10 +12,11 @@ summary: Sie können eine vorhandene Trident-Installation ganz einfach über den
 
 
 [role="lead"]
-Sie können Trident mit dem Trident-Operator entweder manuell oder mit Helm aktualisieren. Sie können von einer Trident-Bedienerinstallation auf eine andere Trident-Bedienerinstallation aktualisieren oder von einer Installation auf eine Trident-Bedienerversion aktualisieren `tridentctl`. Vor dem Upgrade einer Trident-Bedienerinstallation überprüfenlink:upgrade-trident.html#select-an-upgrade-method["Wählen Sie eine Aktualisierungsmethode aus"].
+Sie können Trident mithilfe des Trident-Operators entweder manuell oder mit Helm aktualisieren. Sie können von einer Trident-Operator-Installation auf eine andere Trident-Operator-Installation upgraden oder von einer  `tridentctl` Installation auf eine Trident-Operator-Version upgraden. Überprüfen Sie link:upgrade-trident.html#step-3-select-an-upgrade-method["Wählen Sie eine Aktualisierungsmethode aus"] vor dem Upgrade einer Trident-Operator-Installation.
 
 
 
+[[upgrade-a-manual-installation]]
 == Aktualisieren einer manuellen Installation
 
 Sie können von einer Installation eines Trident Operators mit Cluster-Umfang auf eine andere Installation eines Trident Operators mit Cluster-Umfang aktualisieren. Alle Trident-Versionen 21.01 und höher verwenden einen Clusteroperator.
@@ -57,6 +58,7 @@ kubectl create -f 24.10.0/trident-installer/deploy/<bundle.yaml> -n trident
 
 
 
+[[upgrade-a-helm-installation]]
 == Aktualisieren einer Helm-Installation
 
 Sie können eine Trident Helm-Installation aktualisieren.
@@ -102,6 +104,7 @@ NOTE: Wenn Sie während der Erstinstallation benutzerdefinierte Optionen festleg
 
 
 
+[[upgrade-from-a-tridentctl-installation-to-trident-operator]]
 == Upgrade von einer `tridentctl` Installation auf einen Trident-Operator
 
 Sie können von einer Installation aus auf die neueste Version des Trident-Bedieners aktualisieren `tridentctl`. Die vorhandenen Back-Ends und VES stehen automatisch zur Verfügung.
